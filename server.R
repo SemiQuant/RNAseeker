@@ -113,8 +113,9 @@ shinyServer(function(input, output, session) {
                # ),
                checkboxGroupInput("sel_samp_g", "Select samples to keep by group (not working yet)",
                                   inline = T,
-                                  choiceNames = as.list(all_groups),
-                                  choiceValues = as.list(all_groups),
+                                  # choiceNames = as.list(all_groups),
+                                  # choiceValues = as.list(all_groups),
+                                  choices = as.list(all_groups),
                                   selected = as.list(all_groups)
                )
       )
