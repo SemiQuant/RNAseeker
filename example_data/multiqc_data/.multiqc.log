@@ -1,0 +1,68 @@
+[2017-05-05 17:23:47,353] multiqc                                            [DEBUG  ]  No MultiQC config found: /nfs/users/bi/jlimberis/bin/Py_general/lib/python2.7/site-packages/multiqc_config.yaml
+[2017-05-05 17:23:47,354] multiqc                                            [DEBUG  ]  No MultiQC config found: /users/bi/jlimberis/.multiqc_config.yaml
+[2017-05-05 17:23:47,355] multiqc                                            [DEBUG  ]  No MultiQC config found: multiqc_config.yaml
+[2017-05-05 17:23:47,355] multiqc                                            [DEBUG  ]  Command used: /users/bi/jlimberis/bin/Py_general/bin/multiqc .
+[2017-05-05 17:23:47,355] multiqc                                            [DEBUG  ]  Could not connect to multiqc.info for version check
+[2017-05-05 17:23:47,356] multiqc                                            [INFO   ]  This is MultiQC v0.9
+[2017-05-05 17:23:47,356] multiqc                                            [DEBUG  ]  Command     : /users/bi/jlimberis/bin/Py_general/bin/multiqc .
+[2017-05-05 17:23:47,356] multiqc                                            [DEBUG  ]  Working dir : /nfs/users/bi/jlimberis/TB_HEART/multiqc_report/delete
+[2017-05-05 17:23:47,357] multiqc                                            [INFO   ]  Template    : default
+[2017-05-05 17:23:47,358] multiqc                                            [INFO   ]  Searching '.'
+[2017-05-05 17:23:47,358] multiqc                                            [DEBUG  ]  Analysing modules: gatk, htseq, custom_content, peddy, quast, snpeff, qualimap, bcftools, featureCounts, methylQA, rseqc, picard, preseq, prokka, samblaster, samtools, bamtools, bismark, hicup, salmon, kallisto, slamdunk, star, tophat, bowtie2, bowtie1, cutadapt, trimmomatic, skewer, fastq_screen, fastqc
+[2017-05-05 17:23:47,359] multiqc                                            [DEBUG  ]  Using temporary directory for creating report: /tmp/tmpgCFaoM
+[2017-05-05 17:23:47,403] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: .DS_Store
+[2017-05-05 17:24:01,763] multiqc                                            [DEBUG  ]  Ignoring file as matched an ignore pattern: .DS_Store
+[2017-05-05 17:26:43,358] multiqc.modules.gatk.gatk                          [DEBUG  ]  Could not find any reports in ('.',)
+[2017-05-05 17:29:00,746] multiqc.modules.htseq.htseq                        [INFO   ]  Found 144 reports
+[2017-05-05 17:29:08,263] multiqc.modules.custom_content.custom_content      [DEBUG  ]  No custom content found
+[2017-05-05 17:29:09,140] multiqc.modules.peddy.peddy                        [DEBUG  ]  Could not find any reports in ('.',)
+[2017-05-05 17:29:09,626] multiqc.modules.quast.quast                        [DEBUG  ]  Could not find any reports in ('.',)
+[2017-05-05 17:30:13,442] multiqc.modules.snpeff.snpeff                      [DEBUG  ]  Could not find any data in ('.',)
+[2017-05-05 17:30:13,682] multiqc.modules.qualimap.QM_BamQC                  [DEBUG  ]  Using default Qualimap thresholds: 1, 5, 10, 30, 50
+[2017-05-05 17:30:21,114] multiqc.modules.qualimap.qualimap                  [INFO   ]  Found 144 RNASeq reports
+[2017-05-05 17:31:26,010] multiqc.modules.bcftools.bcftools                  [DEBUG  ]  Could not find any reports in ('.',)
+[2017-05-05 17:31:26,395] multiqc.modules.featureCounts.feature_counts       [DEBUG  ]  Could not find any reports in ('.',)
+[2017-05-05 17:31:26,777] multiqc.modules.methylQA.methylQA                  [DEBUG  ]  Could not find any reports in ('.',)
+[2017-05-05 17:35:52,351] multiqc.modules.rseqc.rseqc                        [DEBUG  ]  Could not find any reports in ('.',)
+[2017-05-05 17:44:33,311] multiqc.modules.picard.picard                      [DEBUG  ]  Could not find any reports in ('.',)
+[2017-05-05 17:46:16,602] multiqc.modules.preseq.preseq                      [DEBUG  ]  Could not find any preseq data in ('.',)
+[2017-05-05 17:47:21,059] multiqc.modules.prokka.prokka                      [DEBUG  ]  Could not find any Prokka data in ('.',)
+[2017-05-05 17:48:24,801] multiqc.modules.samblaster.samblaster              [DEBUG  ]  Could not find any data in ('.',)
+[2017-05-05 17:50:33,456] multiqc.modules.samtools.samtools                  [INFO   ]  Found 144 flagstat reports
+[2017-05-05 17:52:39,004] multiqc.modules.bamtools.bamtools                  [DEBUG  ]  Could not find any reports in ('.',)
+[2017-05-05 17:52:40,153] multiqc.modules.bismark.bismark                    [DEBUG  ]  Could not find any reports in ('.',)
+[2017-05-05 17:52:40,541] multiqc.modules.hicup.hicup                        [DEBUG  ]  Could not find any HiCUP data in ('.',)
+[2017-05-05 17:52:41,111] multiqc.modules.salmon.salmon                      [DEBUG  ]  Could not find any Salmon data in ('.',)
+[2017-05-05 17:53:45,764] multiqc.modules.kallisto.kallisto                  [DEBUG  ]  Could not find any reports in ('.',)
+[2017-05-05 18:00:55,819] multiqc.modules.slamdunk.slamdunk                  [DEBUG  ]  No slamdunk reports found.
+[2017-05-05 18:00:57,292] multiqc.modules.star.star                          [INFO   ]  Found 144 reports
+[2017-05-05 18:01:03,198] multiqc.modules.tophat.tophat                      [DEBUG  ]  Could not find any reports in ('.',)
+[2017-05-05 18:02:12,825] multiqc.modules.bowtie2.bowtie2                    [DEBUG  ]  Could not find any reports in ('.',)
+[2017-05-05 18:03:16,723] multiqc.modules.bowtie1.bowtie1                    [DEBUG  ]  Could not find any reports in ('.',)
+[2017-05-05 18:04:20,186] multiqc.modules.cutadapt.cutadapt                  [DEBUG  ]  Could not find any reports in ('.',)
+[2017-05-05 18:05:22,904] multiqc.modules.trimmomatic.trimmomatic            [DEBUG  ]  Could not find any Trimmomatic data in ('.',)
+[2017-05-05 18:06:28,281] multiqc.modules.skewer.skewer                      [DEBUG  ]  Could not find any data in ('.',)
+[2017-05-05 18:06:28,766] multiqc.modules.fastq_screen.fastq_screen          [DEBUG  ]  Could not find any reports in ('.',)
+[2017-05-05 18:07:51,003] multiqc.modules.fastqc.fastqc                      [INFO   ]  Found 144 reports
+[2017-05-05 18:08:19,420] multiqc.plots.table                                [DEBUG  ]  Plotting beeswarm instead of table, 576 samples
+[2017-05-05 18:08:19,455] multiqc                                            [INFO   ]  Report      : multiqc_report.html
+[2017-05-05 18:08:19,492] multiqc                                            [INFO   ]  Data        : multiqc_data
+[2017-05-05 18:08:19,492] multiqc                                            [DEBUG  ]  Moving data file from '/tmp/tmpgCFaoM/multiqc_data/mqc_fastqc_sequence_length_distribution_plot_1.txt' to '/nfs/users/bi/jlimberis/TB_HEART/multiqc_report/delete/multiqc_data'
+[2017-05-05 18:08:19,540] multiqc                                            [DEBUG  ]  Moving data file from '/tmp/tmpgCFaoM/multiqc_data/mqc_fastqc_sequence_duplication_levels_plot_1.txt' to '/nfs/users/bi/jlimberis/TB_HEART/multiqc_report/delete/multiqc_data'
+[2017-05-05 18:08:19,557] multiqc                                            [DEBUG  ]  Moving data file from '/tmp/tmpgCFaoM/multiqc_data/mqc_fastqc_per_sequence_gc_content_plot_Counts.txt' to '/nfs/users/bi/jlimberis/TB_HEART/multiqc_report/delete/multiqc_data'
+[2017-05-05 18:08:19,597] multiqc                                            [DEBUG  ]  Moving data file from '/tmp/tmpgCFaoM/multiqc_data/mqc_htseq_assignment_plot_1.txt' to '/nfs/users/bi/jlimberis/TB_HEART/multiqc_report/delete/multiqc_data'
+[2017-05-05 18:08:19,627] multiqc                                            [DEBUG  ]  Moving data file from '/tmp/tmpgCFaoM/multiqc_data/mqc_fastqc_overrepresented_sequencesi_plot_1.txt' to '/nfs/users/bi/jlimberis/TB_HEART/multiqc_report/delete/multiqc_data'
+[2017-05-05 18:08:19,636] multiqc                                            [DEBUG  ]  Moving data file from '/tmp/tmpgCFaoM/multiqc_data/mqc_fastqc_per_base_n_content_plot_1.txt' to '/nfs/users/bi/jlimberis/TB_HEART/multiqc_report/delete/multiqc_data'
+[2017-05-05 18:08:19,649] multiqc                                            [DEBUG  ]  Moving data file from '/tmp/tmpgCFaoM/multiqc_data/multiqc_star.txt' to '/nfs/users/bi/jlimberis/TB_HEART/multiqc_report/delete/multiqc_data'
+[2017-05-05 18:08:19,659] multiqc                                            [DEBUG  ]  Moving data file from '/tmp/tmpgCFaoM/multiqc_data/multiqc_htseq.txt' to '/nfs/users/bi/jlimberis/TB_HEART/multiqc_report/delete/multiqc_data'
+[2017-05-05 18:08:19,667] multiqc                                            [DEBUG  ]  Moving data file from '/tmp/tmpgCFaoM/multiqc_data/mqc_fastqc_per_base_sequence_quality_plot_1.txt' to '/nfs/users/bi/jlimberis/TB_HEART/multiqc_report/delete/multiqc_data'
+[2017-05-05 18:08:19,677] multiqc                                            [DEBUG  ]  Moving data file from '/tmp/tmpgCFaoM/multiqc_data/multiqc_fastqc.txt' to '/nfs/users/bi/jlimberis/TB_HEART/multiqc_report/delete/multiqc_data'
+[2017-05-05 18:08:19,685] multiqc                                            [DEBUG  ]  Moving data file from '/tmp/tmpgCFaoM/multiqc_data/mqc_fastqc_per_sequence_gc_content_plot_Percentages.txt' to '/nfs/users/bi/jlimberis/TB_HEART/multiqc_report/delete/multiqc_data'
+[2017-05-05 18:08:19,717] multiqc                                            [DEBUG  ]  Moving data file from '/tmp/tmpgCFaoM/multiqc_data/mqc_fastqc_per_sequence_quality_scores_plot_1.txt' to '/nfs/users/bi/jlimberis/TB_HEART/multiqc_report/delete/multiqc_data'
+[2017-05-05 18:08:19,727] multiqc                                            [DEBUG  ]  Moving data file from '/tmp/tmpgCFaoM/multiqc_data/mqc_star_alignment_plot_1.txt' to '/nfs/users/bi/jlimberis/TB_HEART/multiqc_report/delete/multiqc_data'
+[2017-05-05 18:08:19,735] multiqc                                            [DEBUG  ]  Moving data file from '/tmp/tmpgCFaoM/multiqc_data/mqc_fastqc_adapter_content_plot_1.txt' to '/nfs/users/bi/jlimberis/TB_HEART/multiqc_report/delete/multiqc_data'
+[2017-05-05 18:08:19,746] multiqc                                            [DEBUG  ]  Moving data file from '/tmp/tmpgCFaoM/multiqc_data/mqc_qualimap_genomic_origin_1.txt' to '/nfs/users/bi/jlimberis/TB_HEART/multiqc_report/delete/multiqc_data'
+[2017-05-05 18:08:19,756] multiqc                                            [DEBUG  ]  Moving data file from '/tmp/tmpgCFaoM/multiqc_data/multiqc_sources.txt' to '/nfs/users/bi/jlimberis/TB_HEART/multiqc_report/delete/multiqc_data'
+[2017-05-05 18:08:19,767] multiqc                                            [DEBUG  ]  Moving data file from '/tmp/tmpgCFaoM/multiqc_data/multiqc_samtools_flagstat.txt' to '/nfs/users/bi/jlimberis/TB_HEART/multiqc_report/delete/multiqc_data'
+[2017-05-05 18:08:19,777] multiqc                                            [DEBUG  ]  Moving data file from '/tmp/tmpgCFaoM/multiqc_data/mqc_qualimap_gene_coverage_profile_1.txt' to '/nfs/users/bi/jlimberis/TB_HEART/multiqc_report/delete/multiqc_data'
+[2017-05-05 18:08:21,710] multiqc                                            [INFO   ]  MultiQC complete
