@@ -1,4 +1,13 @@
-
+require(shiny)
+require(shinythemes)
+require(shinyBS)
+require(shinydashboard)
+require(plotly)
+require(d3heatmap)
+require(DT)
+require(pcaExplorer)
+require(manhattanly)
+require(shinyFiles)
 
 tweak_group_in <-
   tags$head(tags$style(HTML("
@@ -15,28 +24,29 @@ tweak_group_in <-
                             }
                             .checkbox-inline {margin: 0 !important;}
                             ")))
-require(shiny)
-require(shinythemes)
-require(shinyBS)
-require(shinydashboard)
-require(plotly)
-require(d3heatmap)
-require(DT)
-require(pcaExplorer)
-require(manhattanly)
-
 
 landing_pan <- tabPanel("Main",
                         sidebarLayout(
                           sidebarPanel(width = 3,
                                        #upload stuff here
-                                       actionButton("load_user", label = "Load User Dataset", class = "success"),
-                                       actionButton("load_x", label = "Load Example Dataset", class = "success"),
-                                       br(),
-                                       radioButtons("corr", "Select Transformation", choices = c("log2", "VST"), selected = "log2")
+                                       # actionButton("load_user", label = "Load User Dataset", class = "success", width = "250px"),
+                                       shinyDirButton("load_user", label = "Load User Dataset", title = NULL, buttonType = "success"),
+                                       br(),br(),
+                                       actionButton("load_x", label = "Load Example Dataset", width = "200px"),
+                                       br(),br(),
+                                       radioButtons("corr", "Select Transformation", choices = c("log2", "VST"), selected = "log2"),
+                                       bookmarkButton(id = "bookmark_test")
                           ),
                           mainPanel(
-                            h2("Description here - with side panel to upload data"),
+                            h2("Welcome to RNAseeker"),
+                            h4("Please upload your data using the side bar and begin exploring it"),
+                            h5("You can perform"),
+                            tags$li("Quality control"),
+                            tags$li("Principal component analysis"),
+                            tags$li("Exploritory data analysis"),
+                            tags$li("Differential expression analysis"),
+                            tags$li("Gene ontology enrichment"),
+                            br(),
                             textOutput("notes"),
                             br(),
                             # sample_select
@@ -104,7 +114,7 @@ sampdist_pan <- tabPanel("Sample to sample distances and PCA",
                                      column(2, selectInput("k_num", "Number of clusters", choices = c(1:10), selected = 1)),
                                      column(2, selectInput("dist_met", "dist method", choices = c("euclidean", "maximum", "manhattan", "canberra", "binary", "minkowski"), selected = 1)),
                                      column(2, selectInput("hclust", "hclust method", choices = c("complete", "ward.D", "ward.D2", "single", "average", "mcquitty", "median", "centroid"), selected = 1)),
-                                     column(2, actionButton("corr_up", "Update Corr"))
+                                     column(2, actionButton("corr_up", "Update Corr", class= "btn-primary"))
                                    ),
 
                                    plotlyOutput("heatmapsampledist_corr"),
@@ -119,12 +129,12 @@ sampdist_pan <- tabPanel("Sample to sample distances and PCA",
                                      id = "tabset_pca", #height = "250px",
                                      width = 12,
 
-                                     tabPanel("PCA interactive",
-                                              plotlyOutput("pca_plotly")
-                                     ),
-
                                      tabPanel("PCA static with elipses",
                                               plotOutput("pca")
+                                     ),
+
+                                     tabPanel("PCA interactive",
+                                              plotlyOutput("pca_plotly")
                                      ),
 
                                      tabPanel("Scree plot",
@@ -299,16 +309,16 @@ de_pan <- tabPanel("Differential Expression",
                                 dataTableOutput("DE_stat")
                        ),
                        tabPanel("Volcano",
-                                plotlyOutput("DE_volc", width = "12")
+                                plotlyOutput("DE_volc")
                        ),
                        tabPanel("QQ",
-                                plotlyOutput("DE_qq", width = "12")
+                                plotlyOutput("DE_qq")
                        ),
                        tabPanel("MA",
-                                plotlyOutput("DE_ma", width = "12")
+                                plotlyOutput("DE_ma")
                        ),
                        tabPanel("Scatter",
-                                p("Not quite sure if this is plotting the correct data, recheck"),
+                                # p("Plotly not working for this at the mo"),
                                 plotlyOutput("DE_scat")
                        )
                      ),
@@ -324,38 +334,51 @@ de_pan <- tabPanel("Differential Expression",
 
 ge_go <- tabPanel("GO enrichment",
                   mainPanel(
-                    h4("Gene set enrichment etc coming soon.")
+                    h4("Gene set enrichment"),
+                    p("still under construction"),
+                    textInput("p_go", "Enter adj.p cutoff for GO results (alpha)", value = 0.1),
+                    selectInput("method_go", "GO enrichment method",
+                                choices = c("anova", "randomForest"), selected = ("anova")),
+                    bsTooltip("method_go", "The statistical framework to score genes and gene ontologies."),
+                    actionButton("Calculate", "Calculate"),
+
+                    verbatimTextOutput("Go_progress"),
+                    p("Genes regarded as significant using the alpha set in DE panel will be included in the analysis"),
+                    plotOutput("pwd_plot"),
+                    verbatimTextOutput("enriched"),
+                    tableOutput("res_tab")
                   ))
 
+function(request) {
+  fluidPage(
+    theme = shinythemes::shinytheme("slate"),
+    # includeCSS("/Users/jdlim/Downloads/x_lbd_free_v1.3.1/assets/css/bootstrap.min.css"),
+    tweak_group_in,
+    # theme = "www/slate.edited.css",
+    # tags$style(type = "text/css", "#bigbox {height: 300px !important;}"),
+    navbarPage(title=div(img(src = "test_logo_white.png", height="30", width="30"), "RNAseq analysis"),
+               windowTitle = "RNAseeker - SB",
 
-shinyUI(fluidPage(
-  theme = shinythemes::shinytheme("slate"),
-  # includeCSS("/Users/jdlim/Downloads/x_lbd_free_v1.3.1/assets/css/bootstrap.min.css"),
-  tweak_group_in,
-  # theme = "www/slate.edited.css",
-  # tags$style(type = "text/css", "#bigbox {height: 300px !important;}"),
-  navbarPage(title=div(img(src = "test_logo_white.png", height="30", width="30"), "RNAseq analysis"),
-             windowTitle = "RNAseeker - SB",
+               landing_pan,
 
-             landing_pan,
+               navbarMenu("Quality Control",
+                          QC_rrna,
+                          QC_pan,
+                          QC_noramlized_hist),
 
-             navbarMenu("Quality Control",
-                        QC_rrna,
-                        QC_pan,
-                        QC_noramlized_hist),
+               navbarMenu("Visual Exploration",
+                          # QC_noramlized_hist,
+                          sat_pan,
+                          sens_pan,
+                          comps_pan,
+                          sampdist_pan),
 
-             navbarMenu("Visual Exploration",
-                        # QC_noramlized_hist,
-                        sat_pan,
-                        sens_pan,
-                        comps_pan,
-                        sampdist_pan),
+               navbarMenu("Statistical Exploration",
+                          de_pan,
+                          ge_go
+               )
 
-             navbarMenu("Statistical Exploration",
-                        de_pan,
-                        ge_go
-             )
-
+    )
   )
-)
-)
+  # )
+}
