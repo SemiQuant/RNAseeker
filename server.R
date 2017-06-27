@@ -1090,6 +1090,39 @@ shinyServer(function(input, output, session) {
 
 
 
+  #
+  # observeEvent(input$test_save,{
+  #   save(session, file = "delete/test")
+  # })
+  #
+  # observeEvent(input$test_load,{
+  #   session = load("delete/test")
+  # })
+  #
+
+  # observeEvent(input$test_load,{
+  #
+  #   if(!file.exists("delete/inputs.RDS")) {return(NULL)}
+  #
+  #   savedInputs <- readRDS("delete/inputs.RDS")
+  #
+  #   inputIDs <- names(savedInputs)
+  #   inputvalues <- unlist(savedInputs)
+  #   for (i in 1:length(savedInputs)) {
+  #     session$sendInputMessage(inputIDs[i],  list(value=inputvalues[[i]]) )
+  #   }
+  # })
+  #
+  # observeEvent(input$test_save,{
+  #   saveRDS( reactiveValuesToList(input) , file = "delete/inputs.RDS")
+  # })
+
+
+
+
+
+
+
   # #for DE calcs
   # save.image(file = "test.R")
   # dds(), counts.test, counts.all, res()

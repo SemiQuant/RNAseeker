@@ -35,7 +35,9 @@ landing_pan <- tabPanel("Main",
                                        actionButton("load_x", label = "Load Example Dataset", width = "200px"),
                                        br(),br(),
                                        radioButtons("corr", "Select Transformation", choices = c("log2", "VST"), selected = "log2"),
-                                       bookmarkButton(id = "bookmark_test")
+                                       bookmarkButton(id = "bookmark_test"),
+                                       actionButton("test_save", "save test"),
+                                       actionButton("test_load", "load test")
                           ),
                           mainPanel(
                             h2("Welcome to RNAseeker"),
