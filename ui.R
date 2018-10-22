@@ -30,7 +30,7 @@ landing_pan <- tabPanel("Main",
                           sidebarPanel(width = 3,
                                        #upload stuff here
                                        # actionButton("load_user", label = "Load User Dataset", class = "success", width = "250px"),
-                                       shinyDirButton("load_user", label = "Load User Dataset", title = NULL, buttonType = "success"),
+                                       # shinyDirButton("load_user", label = "Load User Dataset", title = NULL, buttonType = "success"),
                                        br(),br(),
                                        actionButton("load_x", label = "Load Example Dataset", width = "200px"),
                                        br(),br(),
@@ -148,15 +148,15 @@ sampdist_pan <- tabPanel("Sample to sample distances and PCA",
                                      )
                                    ),
                                    # actionButton("pca_exp", label = "Launch interactive PCA explorer", class = "success"),
-                                   br(), br(),
-                                   box(width = 12, height = "100%",
-                                       bsCollapse(id = "collapseTest", #open = "Further interactive PCA explorer - click to expand",
-                                                  bsCollapsePanel("Further interactive PCA explorer - click to expand", #style = "bigbox",
-                                                                  # if (exists("dds_HTSeq"))
-                                                                  # pcaExplorer(dds = dds_HTSeq(), rlt = assay_in())
-                                                                  pcaExplorer()
-                                                  ))),
-                                   br(), br(), br(),br(), br(), br(),br(), br(), br()
+                                   br(), br()
+                                   # box(width = 12, height = "100%",
+                                   #     bsCollapse(id = "collapseTest", #open = "Further interactive PCA explorer - click to expand",
+                                   #                bsCollapsePanel("Further interactive PCA explorer - click to expand", #style = "bigbox",
+                                   #                                # if (exists("dds_HTSeq"))
+                                   #                                # pcaExplorer(dds = dds_HTSeq(), rlt = assay_in())
+                                   #                                pcaExplorer()
+                                   #                ))),
+                                   # br(), br(), br(),br(), br(), br(),br(), br(), br()
                          )
 )
 

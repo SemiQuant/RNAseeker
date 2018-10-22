@@ -1,7 +1,7 @@
 # using install.packages(c("ggplot2", "shiny", "plotly"))
 #other devtools::install_github("rstudio/shiny"); devtools::install_github("hadley/ggplot2"); devtools::install_github("ropensci/plotly")
 
-# rsconnect::deployApp("/Users/jdlim/Library/Mobile Documents/com~apple~CloudDocs/Bioinformatics/RNAseeker", launch.browser = F, account = "sciencebuff")
+# rsconnect::deployApp("/Users/jdlim/Bioinformatics/RNAseeker", launch.browser = F, account = "sciencebuff")
 
 #to fix
 # updating of corr plots after sample selection
@@ -22,6 +22,9 @@
 # add annotation lookup
 #
 # make plots look good
+#
+# add download as HTML widget for plots
+#
 #################################################################################################
 source("qqly.R")
 require(shiny)
@@ -159,7 +162,6 @@ shinyServer(function(input, output, session) {
     load(data_load$noi_bio_path)
     noi_dat_bio_detect
   })
-
 
   # observeEvent(input$load_x, input$load_u,{
   #   data_load$multi_qc_path <<- "/Users/jdlim/Library/Mobile Documents/com~apple~CloudDocs/Bioinformatics/RNAseeker/example_data/multiqc_report.html"
@@ -428,8 +430,10 @@ shinyServer(function(input, output, session) {
                 k_row = as.numeric(input$k_num), k_col = as.numeric(input$k_num),
                 hclust_method = input$hclust, dist_method = input$dist_met,
                 scale_fill_gradient_fun = ggplot2::scale_fill_gradient2(low = "blue", high = "red", midpoint = 0, limits = c(-1, 1)),
-                heatmap_layers = gg_back
+                heatmap_layers = gg_back,
+                side_color_layers = gg_back
       )
+
     })
   })
 
@@ -469,12 +473,40 @@ shinyServer(function(input, output, session) {
       #                       yaxis = list(title = 'PC2'),
       #                       zaxis = list(title = 'PC3')))
 
-      if (all(rownames(expgroups()[c(input$pc_col)]) == rownames(data.frame(pca$rotation))))
-        plot_ly(data.frame(pca$rotation), x = ~PC1, y = ~PC2, z = ~PC3, color = unlist(expgroups()[c(input$pc_col)])) %>%
+
+      ###3d scatter param
+      axis <- list(
+        xaxis = list(title = 'PC1'),
+        yaxis = list(title = 'PC2'),
+        zaxis = list(title = 'PC3'),
+        color =toRGB("#d3d3d3"),
+        linecolor = toRGB("#d3d3d3"),
+        gridcolor = toRGB("#d3d3d3")
+      )
+
+      scene = list(
+        xaxis = axis,
+        yaxis = axis,
+        zaxis = axis)
+      ####
+
+      if (all(rownames(expgroups()[c(input$pc_col)]) == rownames(data.frame(pca$x))))
+      plot_ly(data.frame(pca$x), x = ~PC1, y = ~PC2, z = ~PC3, color = expgroups()$Group,
+              colors = unique(fac2col(grps$group)), alpha = 0.8) %>%
         add_markers() %>%
-        layout(scene = list(xaxis = list(title = 'PC1'),
-                            yaxis = list(title = 'PC2'),
-                            zaxis = list(title = 'PC3')))
+        layout(scene = scene,
+               paper_bgcolor = "#272b30",
+               plot_bgcolor = "#272b30",
+               legend = list(
+                 font = list(
+                   color = "#d3d3d3")
+               )
+        )
+        # plot_ly(data.frame(pca$rotation), x = ~PC1, y = ~PC2, z = ~PC3, color = unlist(expgroups()[c(input$pc_col)])) %>%
+        # add_markers() %>%
+        # layout(scene = list(xaxis = list(title = 'PC1'),
+        #                     yaxis = list(title = 'PC2'),
+        #                     zaxis = list(title = 'PC3')))
       else
         ggplotly(
           ggplot(data.frame()) +
@@ -967,7 +999,9 @@ shinyServer(function(input, output, session) {
                           # col_side_colors = fac2col( expgroups()[c(colnames(expgroups())==input$meta_de)] ),
                           scale_fill_gradient_fun = ggplot2::scale_fill_gradient2(low = "red", mid = "black", high = "green", midpoint = 0, na.value = "white"),
                           xlab = "Mean count accross selected genes",
-                          heatmap_layers = gg_back)
+                          heatmap_layers = gg_back,
+                          side_color_layers = gg_back
+                )
                 #           # k_row = as.numeric(input$k_num), k_col = as.numeric(input$k_num),
                 #           # hclust_method = input$hclust, dist_method = input$dist_met,
                 #

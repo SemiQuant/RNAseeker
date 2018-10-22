@@ -65,7 +65,7 @@ save(vst_in,
 bio <- read.table("bio.txt")
 # require(NOISeq)
 noi_dat <- readData(assay(dds_HTSeq_in), colData(dds_HTSeq_in), biotype = bio)
-noi_dat_saturation <-  dat(Heart_data, k = 0, ndepth = 10, type = "saturation")
+noi_dat_saturation <-  dat(noi_dat, k = 0, ndepth = 10, type = "saturation")
 
 
 
